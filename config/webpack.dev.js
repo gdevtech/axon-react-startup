@@ -12,8 +12,9 @@ module.exports = merge(commonConfig, {
   devtool: 'inline-source-map',
 
   output: {
-    path: path.resolve(__dirname, '../public/'),
-    filename: '[name].[hash:4].js',
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
+    publicPath: '/',
   },
 
   devServer: {

@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const CSSReset = createGlobalStyle`
+:root {
+  --color-primary: blue;
+  --color-secondary: green;
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -598,4 +602,4 @@ video {
 
 `;
 
-export { GlobalStyle };
+export default CSSReset;

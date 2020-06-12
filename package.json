@@ -7,8 +7,9 @@
     "prestart": "npm-run-all --silent -p remove:coverage remove:public",
     "start": "npm-run-all --silent -p lint:fix test:watch dev lint:watch format:watch eslint:watch",
     "build": "npm-run-all -p test lint:fix prod",
+    "build:staging": "npm-run-all -p test lint:fix staging",
     "test": "jest --coverage",
-    "test:watch": "jest --watch --colors",
+    "test:watch": "jest --watchAll --coverage --colors",
     "test:coverage": "jest --coverage --colors",
     "dev": "webpack-dev-server --env development",
     "staging": "webpack --env staging",
@@ -16,12 +17,14 @@
     "lint": "tsc && eslint src/**/*.{ts,tsx}",
     "lint:fix": "tsc --noEmit && eslint src/**/*.{ts,tsx} --fix",
     "lint:watch": "tsc --watch --pretty",
-    "eslint:watch": "esw src/**/* -w --clear --changed",
+    "eslint:watch": "esw src/**/* -w --clear --changed --fix",
     "format": "prettier --write \"./src/**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)\"",
     "format:watch": "onchange '**/*.js' -- prettier --write {{changed}}",
     "analyze": "webpack-bundle-analyzer --port 4200 public/stats.json",
     "remove:coverage": "rimraf ./coverage",
-    "remove:public": "rimraf ./public"
+    "remove:public": "rimraf ./public",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -37,13 +40,14 @@
   },
   "homepage": "https://github.com/gdevtech/axon-react-startup#readme",
   "dependencies": {
-    "@types/styled-components": "^5.0.1",
+    "@types/styled-components": "^5.1.0",
     "babel-jest": "^25.3.0",
     "focus-visible": "^5.1.0",
     "polished": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@architect/sandbox": "^1.9.2",
@@ -55,7 +59,7 @@
     "@babel/preset-typescript": "^7.9.0",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.2",
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^25.2.3",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
@@ -89,9 +93,11 @@
     "html-webpack-plugin": "^4.2.0",
     "husky": "^4.2.5",
     "image-webpack-loader": "^6.0.0",
-    "jest": "^25.3.0",
+    "jest": "^25.5.4",
     "jest-environment-enzyme": "^7.1.2",
     "jest-styled-components": "^7.0.2",
+    "jest-watch-typeahead": "^0.6.0",
+    "lint-staged": "^10.2.4",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.1.0",
     "prettier": "^2.0.4",
@@ -100,7 +106,7 @@
     "source-map-loader": "^0.2.4",
     "svg-url-loader": "^5.0.0",
     "terser-webpack-plugin": "^2.3.5",
-    "ts-jest": "^25.3.1",
+    "ts-jest": "^25.5.1",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
     "typescript-plugin-styled-components": "^1.4.4",
@@ -109,5 +115,22 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
+  },
+  "snyk": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*/src/**/*.+(ts|tsx)": [
+      "tsc",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

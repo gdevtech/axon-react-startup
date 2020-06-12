@@ -55,7 +55,7 @@ module.exports = {
                 optimizationLevel: 7,
               },
               pngquant: {
-                quality: '65-90',
+                quality: [0.65, 0.9],
                 speed: 4,
               },
             },
@@ -99,19 +99,6 @@ module.exports = {
         test: /\.js(x?)$/,
         loader: 'source-map-loader',
         enforce: 'pre',
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'svg-url-loader',
-            options: {
-              // Inline files smaller than 10 kB
-              limit: 10 * 1024,
-              noquotes: true,
-            },
-          },
-        ],
       },
     ],
   },

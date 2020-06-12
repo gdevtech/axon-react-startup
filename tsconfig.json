@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "noEmit": true, // Do not emit output (meaning do not compile code, only perform type checking)
     "sourceMap": true, //Generates corresponding .map file.
     "noImplicitAny": true, //Raise error on expressions and declarations with an implied any type.

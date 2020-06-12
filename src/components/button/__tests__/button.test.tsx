@@ -5,7 +5,6 @@ import Button from '../Button';
 describe('Button Component', () => {
   test('Loading Button Message', () => {
     const { queryByText } = render(<Button disabled>Loading...</Button>);
-
     expect(queryByText('Loading...')).toBeTruthy();
   });
 });

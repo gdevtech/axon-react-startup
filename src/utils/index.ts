@@ -1,6 +1,5 @@
 import greeting from './greeting';
+import formatNumbers from './format-numbers';
+import textTruncate from './text-truncate';
 
-const formatNumber = './format-numbers';
-const textTruncate = './text-truncate';
-
-export { formatNumber, greeting, textTruncate };
+export { formatNumbers, greeting, textTruncate };
