@@ -1,4 +1,4 @@
-import { greeting } from '../utils';
+import greeting from './greeting';
 
 const helloString = (name: string): string => {
   if (name) {

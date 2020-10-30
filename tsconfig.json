@@ -3,7 +3,7 @@
     "baseUrl": "./src",
     "noEmit": true, // Do not emit output (meaning do not compile code, only perform type checking)
     "sourceMap": true, //Generates corresponding .map file.
-    "noImplicitAny": true, //Raise error on expressions and declarations with an implied any type.
+    "noImplicitAny": false, //Raise error on expressions and declarations with an implied any type.
     "noImplicitReturns": true, //Report error when not all code paths in function return a value.
     "module": "commonjs", // Specify module code generation
     "target": "es6", // Specify ECMAScript target version

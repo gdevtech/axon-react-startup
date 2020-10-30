@@ -9,8 +9,9 @@
     "build": "npm-run-all -p test lint:fix prod",
     "build:staging": "npm-run-all -p test lint:fix staging",
     "test": "jest --coverage",
-    "test:watch": "jest --watchAll --coverage --colors",
+    "test:watch": "jest --watch --coverage --colors",
     "test:coverage": "jest --coverage --colors",
+    "test:coverage-watch": "jest --watchAll --coverage --colors",
     "dev": "webpack-dev-server --env development",
     "staging": "webpack --env staging",
     "prod": "webpack --env production",
@@ -43,11 +44,13 @@
     "@types/styled-components": "^5.1.0",
     "babel-jest": "^25.3.0",
     "focus-visible": "^5.1.0",
+    "immer": "^7.0.1",
     "polished": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "snyk": "^1.316.1",
     "styled-components": "^5.1.0",
-    "snyk": "^1.316.1"
+    "use-immer": "^0.4.0"
   },
   "devDependencies": {
     "@architect/sandbox": "^1.9.2",

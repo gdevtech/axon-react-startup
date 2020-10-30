@@ -18,7 +18,6 @@ module.exports = merge(commonConfig, {
   },
 
   devServer: {
-    port: 8080,
     overlay: true,
     compress: true,
     open: true,

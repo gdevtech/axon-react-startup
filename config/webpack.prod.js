@@ -19,6 +19,7 @@ module.exports = merge(commonConfig, {
   output: {
     path: path.resolve(__dirname, '../public/'),
     filename: '[name].[chunkhash:4].js',
+    publicPath: '/',
   },
 
   optimization: {
